@@ -1,0 +1,9 @@
+.sidenemu-button-design {
+  width: 100%;
+}
+
+.delete {
+    cursor: pointer;
+    color: orange;
+    margin-left: 0 auto;
+}
