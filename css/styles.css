@@ -7,3 +7,22 @@
     color: orange;
     margin-left: 0 auto;
 }
+
+.backColor {
+  position: absolute;
+  top: 108px;
+  background-color: lavender;
+  width: 200%;
+  height: 1000px;
+  margin: 0;
+  z-index: 0;
+}
+/* .backColorTop {
+  position: absolute;
+  top: 0px;
+  background-color: lightseagreen;
+  width: 200%;
+  height: 100px;
+  margin: 0;
+  z-index: 1;
+} */

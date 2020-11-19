@@ -45,7 +45,7 @@ function next() {
   chack();
   changecolor();
   clear();
-  delete_task();
+
 }
 
 function previous() {
@@ -57,7 +57,7 @@ function previous() {
   chack();
   changecolor();
   clear();
-  delete_task();
+
 }
 
 function jump() {
@@ -69,7 +69,7 @@ function jump() {
   chack();
   changecolor();
   clear();
-  delete_task();
+
 }
 
 function today_button() {
@@ -397,7 +397,7 @@ function clear() {
 }
 localStorageget_target();
 localStorageget_schedule();
-delete_task();
+
 changecolor();
 chack();
 clear();
@@ -406,51 +406,43 @@ button_color_change();
 
 //tab２のJS
 addtask();
-delete_task();
+
 
 //タスクデータを呼ぶとき
-  if (localStorage.getItem("task-container")) {
-    const jasonTaskData = JSON.parse(localStorage.getItem("task-container"))
-    $("#task-container").append(jasonTaskData);
-  }
 
 function addtask() {
   $(".submit-button").on("click", function () {
     let title = $(".task-title").val();
     let contents = $(".task-contents").val();
-
     //タスク追加
-    $("#task-container").append(`<div class="row">
-    <div class="col-3">
-    <p style="line-height: 39px; margin-bottom: 0;">${title}</p>
-    </div>
-    <div class="col-8">
-    <p style="line-height: 39px; margin-bottom: 0;">${contents}</p>
-    </div>
-    <div class="col-1" id="delete-task">
-    <i class="far fa-trash-alt delete" style="line-height: 39px; padding: 0; margin: 0;"></i>
-    </div>
-    </div>`);
-    
-    //タスクhtmlのデータセット
-    const Json_task = JSON.stringify($("#task-container").html());
-    localStorage.setItem("task-container", Json_task);
 
+    document.querySelector('.task-container').innerHTML += `<li class="container-fluid shadow p-2 mb-2 row">
+          <div class="col-3">
+            <p style="line-height: 39px; margin-bottom: 0;">${title}</p>
+          </div>
+          <div class="col-8">
+            <p style="line-height: 39px; margin-bottom: 0;">${contents}</p>
+          </div>
+          <div class="col-1 delete-task">
+            <i class="far fa-trash-alt delete" style="line-height: 39px; padding: 0; margin: 0;"></i>
+          </div>
+        </li>`;
+    $(".task-title").val('');
+    $(".task-contents").val('');
   });
 }
 
-function delete_task() {
-  $("#delete-task").on("click", function () {
+//以下イベントはhttps://lucklog.info/jqeury-on-no-event/
+// を参照
+$("body").on('click', ".delete-task", function () { 
+  $(this).parent().remove();
+});
+// document.querySelector(".task-container").addEventListener('click', e => {
+//   if (e.target.classList.contains('delete-task')) {
+//     e.target.parentElement.remove();
+//   }
+// });
 
-    //タスク追加
-    $(this).parent().remove();
-
-    //タスクhtmlのデータセット
-    const Json_task_delete = JSON.stringify($("#task-container").html());
-    localStorage.setItem("task-container", Json_task_delete);
-
-  });
-}
 
 
 
@@ -498,7 +490,7 @@ function delete_task() {
 //   key2: block,
 //   key3: block
 // }
-  
+
 // console.log(localDATA)
 
 

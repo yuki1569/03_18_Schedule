@@ -11,16 +11,22 @@
   <link rel="stylesheet" href="css/calendar.css">
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="bootstrap_css/bootstrap.min.css">
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="bootstrap_css/bootstrap.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <title>スケジュール管理 App</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
+  
 
-<body>
+<div class="backColorTop"></div>
+<div class="backColor"></div>
+
+<body style="z-index: 1;">
   <div class="container-fluid">
-    <div><h2 style="text-align: center;">スケジュール管理 App</h2></div>
+    <div style="margin-top: 20px;">
+      <h2 style="text-align: center;">My Schedule</h2>
+    </div>
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="item1-tab" data-toggle="tab" href="#item1" role="tab" aria-controls="item1"
@@ -36,8 +42,7 @@
       </li> -->
     </ul>
 
-    <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab"
-      >
+    <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
       <div class="container-fluid">
 
         <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
@@ -84,13 +89,13 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-2" style="background-color: #ffffff; padding-right: 0; padding-left: 0;">
+          <div class="col-2" style="background-color:lavender; padding-right: 0; padding-left: 0;">
             <div class="shadow p-3 mb-3" style="padding: 0%; margin-top: 1em;">
               <a type="button" class="sidenemu-button-design btn btn-primary list-group-item list-group-item-action"
                 data-toggle="modal" data-target="#modal1 " data-value=""
                 style="border-radius: 5px 5px 0px 0px; background-color: rgb(118, 149, 243); "> +add </a>
               <div id="target" class="list-group">
-  
+
               </div>
               <a type="button"
                 class="delete sidenemu-button-design btn btn-primary list-group-item list-group-item-action"
@@ -99,7 +104,7 @@
             </div>
           </div>
           <div class="col-10">
-            <div class="container-calendar shadow p-3 mb-3">
+            <div class="container-calendar shadow p-3 mb-3" style="border-radius: 5px; margin-top: 20px;">
               <h4 style="position: relative; top: 20px;" id="monthAndYear"></h4>
               <div class="button-container-calendar" style="position: relative; top: -20px; margin: 0;">
                 <button id="previous" onclick="previous()">‹</button>
@@ -145,27 +150,27 @@
 
     </div>
     <!-- 2番目のタブ -->
-    <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab "
-      style=" top: 1em;">
-      <div style="position: relative; left: 0; top: 10px;">
-        
-        <div id="task-container" class="container-fluid shadow p-2 mb-2"  >
-          <div class="row">
-            <div class="col-3">
-              <p style="line-height: 39px; margin-bottom: 0;">${title}</p>
-            </div>
-            <div class="col-8">
-              <p style="line-height: 39px; margin-bottom: 0;">${contents}</p>
-            </div>
-            <div class="col-1" id="delete-task">
-              <i class="far fa-trash-alt delete" style="line-height: 39px; padding: 0; margin: 0;"></i>
-            </div>
+    <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab " style=" top: 1em;">
+
+      <ul class="task-container" style="position: relative; left: 0px; top: 10px;padding-inline-start: 20px; background-color: #fff;">
+
+        <li class="container-fluid shadow p-2 mb-2 row">
+          <div class="col-3">
+            <p style="line-height: 39px; margin-bottom: 0;">${title}</p>
           </div>
-        </div>
-        
-        <!-- 入力フォーム -->
-      <form class="container-fluid" style=" margin-top:20px;padding-left: 0;">
-        <div class="form-row align-items-center" >
+          <div class="col-8">
+            <p style="line-height: 39px; margin-bottom: 0;">${contents}</p>
+          </div>
+          <div class="delete-task col-1">
+            <i class="far fa-trash-alt delete" style="line-height: 39px; padding: 0; margin: 0;"></i>
+          </div>
+        </li>
+
+      </ul>
+
+      <!-- 入力フォーム -->
+      <form class="form-contens container-fluid" style=" margin-top:20px;padding-left: 10px;">
+        <div class="form-row align-items-center">
           <div class="col-auto">
             <label class="sr-only" for="text5a">tite</label>
             <input type="text" class="task-title form-control mb-2" id="text5a" placeholder="tite">
@@ -186,12 +191,11 @@
         </div>
       </form>
 
-    </div>
 
-    <!-- <div class="tab-pane fade" id="item3" role="tabpanel" aria-labelledby="item3-tab">
+      <!-- <div class="tab-pane fade" id="item3" role="tabpanel" aria-labelledby="item3-tab">
       This is a text of item#3.
     </div> -->
-  </div>
+    </div>
 
 
 
