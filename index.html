@@ -152,14 +152,17 @@
     <!-- 2番目のタブ -->
     <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab " style=" top: 1em;">
 
-      <ul class="task-container" style="position: relative; left: 0px; top: 10px;padding-inline-start: 20px; background-color: #fff;">
+      <ul class="task-container" style="position: relative; left: 0px; top: 10px;padding-inline-start: 20px;" >
 
         <li class="container-fluid shadow p-2 mb-2 row">
           <div class="col-3">
-            <p style="line-height: 39px; margin-bottom: 0;">${title}</p>
+            <p style="line-height: 39px; margin-bottom: 0;">title</p>
           </div>
-          <div class="col-8">
-            <p style="line-height: 39px; margin-bottom: 0;">${contents}</p>
+          <div class="col-6">
+            <p style="line-height: 39px; margin-bottom: 0;">contents</p>
+          </div>
+          <div class="col-2">
+            <p style="line-height: 39px; margin-bottom: 0;">deadline</p>
           </div>
           <div class="delete-task col-1">
             <i class="far fa-trash-alt delete" style="line-height: 39px; padding: 0; margin: 0;"></i>
@@ -178,6 +181,10 @@
           <div class="col-6">
             <label class="sr-only" for="text5b">contents</label>
             <input type="text" class="task-contents form-control mb-2" id="text5b" placeholder="contents">
+          </div>
+          <div class="col-2">
+            <label class="sr-only" for="text5b">deadline</label>
+            <input type="text" class="task-deadline form-control mb-2" id="text5b" placeholder="deadline">
           </div>
           <div class="col-auto">
             <button type="button" class="submit-button btn btn-primary mb-2">add</button>

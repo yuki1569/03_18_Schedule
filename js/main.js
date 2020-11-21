@@ -167,6 +167,7 @@ let scheduletitle = {
   seagreen: ["c"],
   khaki: ["d"],
   deeppink: ["d"],
+  purple: ["タスクあり"]
 };
 let schedulecolumn = {
   slategray: [""],
@@ -174,6 +175,7 @@ let schedulecolumn = {
   seagreen: [""],
   khaki: [""],
   deeppink: [""],
+  purple: ["a"],
 };
 
 
@@ -229,7 +231,7 @@ daycolumnGenerate();
 
 
 
-//daycolumn配列とschedulecolumn配列（スケジュール）の照合をする関数（仮red用）trueは色を塗る
+//daycolumn配列とschedulecolumn配列（スケジュール）の照合をする関数trueは設定したスケジュールが入る
 function chack() {
 
   // localStorageget_schedule();
@@ -406,36 +408,60 @@ button_color_change();
 
 //tab２のJS
 addtask();
+console.log(scheduletitle);
+console.log(schedulecolumn);
 
 
 //タスクデータを呼ぶとき
-
 function addtask() {
   $(".submit-button").on("click", function () {
     let title = $(".task-title").val();
     let contents = $(".task-contents").val();
+    let deadline = $(".task-deadline").val();
     //タスク追加
-
-    document.querySelector('.task-container').innerHTML += `<li class="container-fluid shadow p-2 mb-2 row">
+    document.querySelector('.task-container').innerHTML += `<li class="container-fluid shadow p-2 mb-2 row" style="background-color: #fff;">
           <div class="col-3">
             <p style="line-height: 39px; margin-bottom: 0;">${title}</p>
           </div>
-          <div class="col-8">
+          <div class="col-6">
             <p style="line-height: 39px; margin-bottom: 0;">${contents}</p>
           </div>
-          <div class="col-1 delete-task">
+          <div class="col-2">
+            <p style="line-height: 39px; margin-bottom: 0;">${deadline}</p>
+          </div>
+          <div class="delete-task col-1">
             <i class="far fa-trash-alt delete" style="line-height: 39px; padding: 0; margin: 0;"></i>
           </div>
         </li>`;
+    console.log(schedulecolumn.purple);
+    schedulecolumn.purple.push(deadline);
+    const jsonData = JSON.stringify(schedulecolumn);
+    localStorage.setItem("schedule", jsonData);
     $(".task-title").val('');
     $(".task-contents").val('');
+    $(".task-deadline").val('');
+    console.log(`${$(".task-container").html()}`);
+    localStorage.setItem("taskdata", $(".task-container").html());
   });
 }
+
+if (localStorage.getItem("taskdata")) {
+  const taskjsonData = localStorage.getItem("taskdata");
+  // const dataT = JSON.parse(taskjsonData);
+  console.log(taskjsonData);
+  $(".task-container").append(taskjsonData);
+}
+
+
+const localStorageset_task = 
 
 //以下イベントはhttps://lucklog.info/jqeury-on-no-event/
 // を参照
 $("body").on('click', ".delete-task", function () { 
   $(this).parent().remove();
+  localStorage.setItem("taskdata", $(".task-container").html());
+  // var deadline = $()
+
 });
 // document.querySelector(".task-container").addEventListener('click', e => {
 //   if (e.target.classList.contains('delete-task')) {
